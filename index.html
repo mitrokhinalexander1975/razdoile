@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>Раздолье — поздравление Андрею Грибкову</title>
+<meta name="description" content="Мини-игра поздравление ко дню рождения Андрея Грибкова от компании «Раздолье»" />
+<meta name="theme-color" content="#040c1f" />
+
+<!-- Telegram Web Apps SDK -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Фоновый слой с мягкими частицами света -->
+  <canvas id="bg-particles" aria-hidden="true"></canvas>
+
+  <!-- Слой конфетти для финала -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <main class="app">
+
+    <header class="app__header">
+      <h1 class="app__title" id="mainTitle">Нажимайте на логотип</h1>
+    </header>
+
+    <section class="stage">
+
+      <!-- Область появления фраз -->
+      <div class="phrase-zone" aria-live="polite">
+        <p class="phrase" id="phraseText"></p>
+      </div>
+
+      <!-- Кликабельный логотип -->
+      <div class="logo-wrap">
+        <div class="logo-glow" id="logoGlow" aria-hidden="true"></div>
+        <img
+          id="logoBtn"
+          class="logo"
+          src="assets/razdolie-logo.png"
+          alt="Логотип компании Раздолье — нажмите, чтобы открыть следующее поздравление"
+          role="button"
+          tabindex="0"
+          aria-label="Нажмите на логотип, чтобы увидеть следующее поздравление"
+          draggable="false"
+        />
+        <!-- Заглушка на случай отсутствия изображения -->
+        <div class="logo-fallback" id="logoFallback" role="button" tabindex="0" aria-label="Нажмите, чтобы увидеть следующее поздравление" hidden>
+          РАЗДОЛЬЕ
+        </div>
+      </div>
+
+      <p class="hint" id="hintText">Каждое нажатие раскрывает новую грань настоящего лидера</p>
+
+      <div class="progress" id="progressWrap" aria-hidden="false">
+        <div class="progress__track">
+          <div class="progress__fill" id="progressFill"></div>
+        </div>
+        <span class="progress__label" id="progressLabel">0 из 10</span>
+      </div>
+
+    </section>
+
+    <!-- Финальный экран -->
+    <section class="finale" id="finaleScreen" hidden>
+      <div class="finale__flash" aria-hidden="true"></div>
+      <p class="finale__signature">Команда Раздолья поздравляет!</p>
+      <button class="finale__btn" id="restartBtn" type="button">Посмотреть ещё раз</button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
